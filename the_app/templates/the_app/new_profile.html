@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% block content %}
+<head>
+	<title>New Profile</title>
+</head>
+<body>
+	<p>Create Profile</p>
+	<p>
+		<form action="{% url 'the_app:new_profile' %}" method='post'>
+			{% csrf_token %}
+			{{ form.as_p }}
+			<button name="submit">Submit</button>
+		</form>
+	</p>
+
+</body>
+{% endblock content %}
+</html>

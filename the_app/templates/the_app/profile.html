@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% load my_filters %}
+<head>
+	<title>{{ profile }}</title>
+</head>
+<body>
+	{% block page_header %}
+	<h3>{{ user.first_name }} {{ user.last_name }}</h3>
+	{% endblock page_header %}
+
+	{% block content %}
+	{{ off }}
+		<br><br>
+		<p>Total wins: <b>{{ entry_count }}</b></p>
+		<p>Online wins:</p>
+		<p>In person wins:</p>
+
+		<p>
+			<a href="{% url 'the_app:entry' user.id %}">Add a result</a><br>
+			{% if entry.id|is_not_numeric %}
+			<p></p>
+			{% else %}
+			<a href="{% url 'the_app:edit_entry' entry.id %}">Edit last result</a>
+			
+			{% endif %}
+		</p>
+		{% for entry in entries %}
+		<div class="card mb-3">
+			<h6 class="card-header">
+				<br><b>{{ entry.date_added }}</b>
+				<small><a href="{% url 'the_app:edit_entry' entry.id %}">Edit result</a></small>
+			</h6>
+			<div class="card-body">
+		<br><h6>{{ entry.comment }}</h6><br></p>
+			</div>
+		</div>
+		{% empty %}
+		<p><em>No entries yet.</em></p>
+		{% endfor %}
+
+
+</body>
+{% endblock content %}
+</html>

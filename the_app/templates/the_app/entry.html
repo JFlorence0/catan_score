@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% load bootstrap4 %}
+<head>
+	<title>Entry</title>
+</head>
+<body>
+	{% block page_header %}
+	<h2>Add a result</h2>
+	{% endblock page_header %}
+
+	{% block content %}
+	<p><a href="{% url 'the_app:profile' user.id %}">{{ profile }}</a></p>
+	<form action="{% url 'the_app:entry' user.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name='submit'>Submit</button>
+	</form>
+</body>
+{% endblock content %}
+</html>

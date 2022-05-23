@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% block page_header %}
+<head>
+	<title>Catan score</title>
+</head>
+<body>
+	<div class="jumbotron">
+		<h1 class="display-3">Track your score</h1>
+		<p class="lead">Keep track of your Catan wins.</p>
+
+		<a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
+	</div>
+
+
+</body>
+{% endblock page_header %}
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% block page_header %}
+<head>
+	<title>Player List</title>
+</head>
+<body>
+	<p><b>Wins</b></p>
+	{% endblock page_header %}
+
+	{% block content %}
+
+	<p>{% for user, score in score_dict.items %}
+		<b>{{ score }}</b> ----- <a href="{% url 'the_app:profile' user.id %}">{{ user.first_name }} {{ user.last_name }}</a><br><br>
+		{% empty%}
+		<p><em>No profiles yet.</em></p>
+		{% endfor %}
+	</p>
+</body>
+{% endblock content %}
+</html>

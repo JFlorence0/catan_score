@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% block content %}
+<head>
+	<title>Rating</title>
+</head>
+<body>
+	<p><a href="{% url 'the_app:profile' profile.id %}">{{ profile }}</a></p>
+	<p>Add a rating</p>
+	<form action="{% url 'the_app:rating' profile.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name='submit'>Rating</button>
+	</form>
+</body>
+{% endblock content %}
+</html>

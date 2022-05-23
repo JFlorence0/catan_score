@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+{% extends 'the_app/base.html' %}
+{% load bootstrap4 %}
+<head>
+	<title>Edit Entry</title>
+</head>
+<body>
+	{% block page_header %}
+	<h2>Edit result</h2>{% endblock page_header %}
+	{% block content %}
+	{{ user.first_name }} {{ user.last_name }}<br><br>
+
+	<form action="{% url 'the_app:edit_entry' entry.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Save changes</button>
+	</form>
+
+</body>
+{% endblock content %}
+</html>
